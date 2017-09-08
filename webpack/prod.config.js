@@ -6,7 +6,6 @@ const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const strip = require('strip-loader');
 
 module.exports = {
     devtool: 'source-map',
@@ -18,35 +17,36 @@ module.exports = {
         publicPath: '/',
     },
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loaders: [strip.loader('debug'), 'babel-loader']
+                use: ['babel-loader']
             }, {
-                test: /\.json$/, loader: 'json-loader',
+                test: /\.json$/,
+                use: ['json-loader']
             }, {
                 test: /\.css$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: 'css-loader?minimize=true&sourceMap' })
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'postcss-loader'] })
             }, {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'less-loader'] })
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'postcss-loader', 'less-loader'] })
             },{
                 test: /\.jpe?g$|\.gif$|\.png$/,
-                loaders: ['url-loader?limit=10000&name=images/[name].[ext]']
+                use: ['url-loader?limit=10000&name=images/[name].[ext]']
             }, {
                 test: /\.ico|\.svg$|\.woff$|\.ttf$|\.eot$/,
-                loaders: ['url-loader?limit=10000&name=fonts/[name].[ext]']
+                use: ['url-loader?limit=10000&name=fonts/[name].[ext]']
             }, {
                 test: /\.json$/,
                 exclude: /node_modules/,
-                loaders: ['json-loader']
+                use: ['json-loader']
             }, {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'sass-loader'] })
+                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'postcss-loader','sass-loader'] })
             }, {
                 test: /\.html$/,
-                loader: 'html-loader?minimize'
+                use: 'html-loader?minimize'
             }
         ]
     },

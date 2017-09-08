@@ -36,35 +36,36 @@ module.exports = {
     devtool: 'inline-source-map',
     context: path.resolve(__dirname, '../src'),
     module: {
-        loaders: [
+        rules: [
             {
                 test: /\.jsx?$/,
                 exclude: /node_modules/,
-                loaders: ['babel-loader?' + JSON.stringify(babelrc), 'eslint-loader']
+                use: ['babel-loader?' + JSON.stringify(babelrc), 'eslint-loader']
             }, {
-                test: /\.json$/, loader: 'json-loader',
+                test: /\.json$/,
+                use: ['json-loader']
             }, {
                 test: /\.css$/,
-                loaders: ['style-loader', 'css-loader']
+                use: ['style-loader', 'css-loader', 'postcss-loader']
             }, {
                 test: /\.less$/,
-                loaders: ['style-loader', 'css-loader', 'less-loader']
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
             }, {
                 test: /\.jpe?g$|\.gif$|\.png$/,
-                loaders: ['url-loader?limit=10000&name=images/[name].[ext]']
+                use: ['url-loader?limit=10000&name=images/[name].[ext]']
             }, {
                 test: /\.ico|\.svg$|\.woff$|\.ttf$|\.eot$/,
-                loaders: ['url-loader?limit=10000&name=fonts/[name].[ext]']
+                use: ['url-loader?limit=10000&name=fonts/[name].[ext]']
             }, {
                 test: /\.json$/,
                 exclude: /node_modules/,
-                loaders: ['json-loader']
+                use: ['json-loader']
             }, {
                 test: /\.scss$/,
-                loaders: ['style-loader', 'css-loader', 'sass-loader']
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
             }, {
                 test: /\.html$/,
-                loader: 'html-loader'
+                use: 'html-loader'
             }
         ]
     },
