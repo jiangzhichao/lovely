@@ -62,7 +62,7 @@ export function changeText(text) {
 
 export function testProxy() {
     return {
-        types: [TEST_PROXY],
+        types: ['', TEST_PROXY, ''],
         promise: (client) => client.get('/freq/diy/band/node/get', { params: { areaCode: 5201, userId: '123456' } })
     };
 }

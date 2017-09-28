@@ -23,8 +23,8 @@ babelrc.plugins.forEach((plugin, index) => {
 module.exports = {
     entry: {
         main: [
-            'webpack/hot/dev-server',
             `webpack-dev-server/client?http://${config.host}:${config.port}`,
+            'webpack/hot/dev-server',
             'index.js'
         ]
     },

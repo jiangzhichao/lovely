@@ -3,7 +3,7 @@ const methods = ['get', 'post', 'put', 'patch', 'del'];
 
 const formatUrl = (path) => '/sam/api' + (path[0] !== '/' ? '/' + path : path);
 
-export default new class ApiClient {
+export default class ApiClient {
     constructor() {
         methods.forEach((method) =>
             this[method] = (path, { params, data } = {}) => new Promise((resolve, reject) => {
@@ -20,4 +20,7 @@ export default new class ApiClient {
                 request.end((err, { text } = {}) => (err || !text || JSON.parse(text).errcode === 0) ? reject(text ? JSON.parse(text) : err) : resolve(JSON.parse(text)));
             }));
     }
-};
+
+    empt() {
+    }
+}

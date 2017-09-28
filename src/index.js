@@ -3,15 +3,16 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
-import createStore from './redux/create';
-import client from './helpers/ApiClient.js';
 import { Provider } from 'react-redux';
 import { Router, hashHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
+
 import getRoutes from './routes';
+import createStore from './redux/create';
+import ApiClient from './helpers/ApiClient.js';
 
 const root = document.getElementById('root');
-const store = createStore(hashHistory, client);
+const store = createStore(hashHistory, new ApiClient());
 const history = syncHistoryWithStore(hashHistory, store);
 
 if (__DEVELOPMENT__ && !window.devToolsExtension) {
