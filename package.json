@@ -1,7 +1,7 @@
 {
     "name": "lovely",
     "version": "1.0.0",
-    "description": "ai guaizi",
+    "description": "no",
     "main": "index.js",
     "scripts": {
         "dev": "concurrently --kill-others \"npm run start-dev\"",

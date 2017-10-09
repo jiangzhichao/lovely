@@ -76,19 +76,6 @@ module.exports = {
         ],
         extensions: ['.json', '.js', '.jsx']
     },
-    devServer: {
-        contentBase: path.resolve(__dirname, '../build'),
-        hot: true,
-        noInfo: false,
-        inline: true,
-        stats: { colors: true },
-        proxy: {
-            '/ccm': {
-                target: 'http://' + config.apiHost + ':' + config.apiPort,
-                secure: false
-            }
-        }
-    },
     plugins: [
         new HtmlWebpackPlugin({
             title: 'lovely',

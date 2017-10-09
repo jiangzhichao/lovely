@@ -22,17 +22,23 @@ export default class Home extends Component {
                 <Button
                     type={'primary'}
                     icon={'search'}
-                >fuck</Button>
+                >
+                    fjjfsdfdsj
+                </Button>
                 <img src={img2G} />
                 <img src={img3G} />
                 <div className="aa" />
                 <div className="bb" />
-                <input className="input" type="text" onInput={(e) => {
-                    this.props.changeText(e.target.value);
-                    this.props.testProxy().then(() => {
+                <input
+                    className="input"
+                    type="text"
+                    onInput={(e) => {
+                        this.props.changeText(e.target.value);
+                        this.props.testProxy().then(() => {
 
-                    });
-                }} />
+                        });
+                    }}
+                />
             </div>
         );
     }
