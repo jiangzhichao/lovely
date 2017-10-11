@@ -21,6 +21,6 @@ export default class ApiClient {
             }));
     }
 
-    empt() {
+    empty() {
     }
 }
