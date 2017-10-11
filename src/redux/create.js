@@ -11,6 +11,7 @@ export default function createStore(history, client) {
     if (__DEVELOPMENT__) {
         const { persistState } = require('redux-devtools');
         const DevTools = require('../components/DevTools/DevTools');
+
         finalCreateStore = compose(
             applyMiddleware(...middleware),
             window.devToolsExtension ? window.devToolsExtension() : DevTools.instrument(),

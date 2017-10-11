@@ -25,7 +25,7 @@ module.exports = {
         main: [
             `webpack-dev-server/client?http://${config.host}:${config.port}`,
             'webpack/hot/dev-server',
-            'index.js'
+            'app.js',
         ]
     },
     output: {
@@ -76,13 +76,28 @@ module.exports = {
         ],
         extensions: ['.json', '.js', '.jsx']
     },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './build',
+        hot: true,
+        noInfo: false,
+        inline: true,
+        stats: { colors: true },
+        proxy: {
+            '/ccm': {
+                target: 'http://' + config.apiHost + ':' + config.apiPort,
+                secure: false
+            }
+        }
+    },
     plugins: [
+        new webpack.DefinePlugin({ __DEVELOPMENT__: true }),
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new HtmlWebpackPlugin({
             title: 'lovely',
             filename: 'index.html',
             template: './helpers/template.html'
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.DefinePlugin({ __DEVELOPMENT__: true })
     ]
 };

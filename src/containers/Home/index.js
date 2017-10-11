@@ -23,7 +23,7 @@ export default class Home extends Component {
                     type={'primary'}
                     icon={'search'}
                 >
-                    fjjfsdfdsj
+                    double kill
                 </Button>
                 <img src={img2G} />
                 <img src={img3G} />
@@ -34,9 +34,8 @@ export default class Home extends Component {
                     type="text"
                     onInput={(e) => {
                         this.props.changeText(e.target.value);
-                        this.props.testProxy().then(() => {
-
-                        });
+                        // this.props.testProxy().then(() => {
+                        // });
                     }}
                 />
             </div>
