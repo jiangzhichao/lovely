@@ -10,7 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     devtool: 'source-map',
     context: path.resolve(__dirname, '../src'),
-    entry: 'index.js',
+    entry: 'app.js',
     output: {
         filename: 'js/[hash].js',
         path: path.resolve(__dirname, '../build'),
