@@ -1,0 +1,44 @@
+.player-content {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.player-content .ant-slider {
+  width: 120px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.player-content .anticon {
+  font-size: 14px;
+  vertical-align: middle;
+  color: #88c7f4;
+  cursor: pointer;
+  margin: 0 3px;
+}
+
+.player-content .anticon:hover {
+  color: #108ee9;
+}
+
+.player-value {
+  color: #666;
+  vertical-align: middle;
+  font-size: 13px;
+  margin-left: 10px;
+}
+
+.player-stop {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  background-color: #88c7f4;
+  margin: 0 6px 0 3px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.player-stop:hover {
+  background-color: #108ee9;
+}
