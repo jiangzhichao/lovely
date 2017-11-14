@@ -6,6 +6,7 @@ const webpack = require('webpack');
 const CleanPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     devtool: 'source-map',
@@ -27,11 +28,17 @@ module.exports = {
                 use: ['json-loader']
             }, {
                 test: /\.css$/,
-                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'postcss-loader'] })
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?minimize=true&sourceMap', 'postcss-loader']
+                })
             }, {
                 test: /\.less$/,
-                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'postcss-loader', 'less-loader'] })
-            },{
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?minimize=true&sourceMap', 'postcss-loader', 'less-loader']
+                })
+            }, {
                 test: /\.jpe?g$|\.gif$|\.png$/,
                 use: ['url-loader?limit=10000&name=images/[name].[ext]']
             }, {
@@ -43,7 +50,10 @@ module.exports = {
                 use: ['json-loader']
             }, {
                 test: /\.scss$/,
-                use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?minimize=true&sourceMap', 'postcss-loader','sass-loader'] })
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader?minimize=true&sourceMap', 'postcss-loader', 'sass-loader']
+                })
             }, {
                 test: /\.html$/,
                 use: 'html-loader?minimize'
@@ -76,6 +86,7 @@ module.exports = {
                 drop_console: true
             },
             sourceMap: true
-        })
+        }),
+        new CopyWebpackPlugin([{ from: './public', to: 'public' }])
     ]
 };

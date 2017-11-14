@@ -91,7 +91,10 @@ export default class PlayerBar extends Component {
                     tipFormatter={e => moment(this.props.startDate).add(e, 'days').format('YYYY-MM-DD')}
                 />
                 <span
-                    className="player-value">{moment(this.props.startDate).add(this.props.value, 'days').format('YYYY-MM-DD')}</span>
+                    className="player-value"
+                >
+                    {moment(this.props.startDate).add(this.props.value, 'days').format('YYYY-MM-DD')}
+                </span>
             </div>
         );
     }

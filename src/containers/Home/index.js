@@ -31,6 +31,21 @@ export default class Home extends Component {
         this.time = null;
     }
 
+    componentDidMount() {
+        this.test();
+    }
+
+    sleep = () => {
+        return new Promise(resolve => {
+            setTimeout(resolve, 5000);
+        });
+    };
+
+    test = async() => {
+        await this.sleep();
+        console.log('aa');
+    };
+
     go = () => {
         this.time = setInterval(() => {
             const value = this.state.value + 1;

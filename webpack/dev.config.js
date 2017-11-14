@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const config = require('../src/config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const babelrc = JSON.parse(fs.readFileSync('./.babelrc'));
 babelrc.plugins = [
@@ -99,5 +100,6 @@ module.exports = {
             filename: 'index.html',
             template: './helpers/template.html'
         }),
+        new CopyWebpackPlugin([{ from: './public', to: 'public' }])
     ]
 };
